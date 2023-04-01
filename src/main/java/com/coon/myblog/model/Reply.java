@@ -1,4 +1,4 @@
-package model;
+package com.coon.myblog.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
