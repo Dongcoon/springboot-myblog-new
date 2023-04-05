@@ -12,10 +12,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Transactional
     public Boolean 회원가입(User user){
+        String rawPassword = user.getPassword();
+        String hashPassword = encoder.encode(rawPassword);
+
+        user.setPassword(hashPassword);
         user.setRoleType(RoleType.USER);
+
         try {
             userRepository.save(user);
             return true;
