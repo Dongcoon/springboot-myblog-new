@@ -13,33 +13,29 @@
             </ul>
             <br>
         </div>
+
         <div id="mArticle" class="article_skin">
-            <div class="list_title">
-                <h2 id="dkBody" class="tit_skin"><span class="screen_out">목록</span><span class="txt_title">분류 전체보기 (10)</span></h2>
-            </div>
-            <div class="list_content">
-                <a href="#" class="link_post">
-                    <strong class="tit_post">제목1</strong>
-                    <p class="txt_post">내용1</p>
-                </a>
-                <div class="detail_info">
-                    <a href="#" class="link_cate">개발/BE(Back-End)</a>
-                    <span class="txt_bar">|</span>
-                    <span class="txt_date">2023. 3. 31. 10:33</span>
+            <c:forEach var="board" items="${boards}">
+            <div class="card w-100 p-1" >
+                <div class="card-body p-1">
+                    <a href="/board/${board.id}" class="link_post">
+                        <div class="b-title">
+                            <h4 class="card-title m-2"><strong>${board.title}</strong></h4>
+                        </div>
+                        <div >
+                            <p class="txt_post">${board.content}</p>
+                        </div>
+                    </a>
+                    <div class="detail_info">
+                        <a href="#" class="link_cate p-2">카테고리</a>
+                        <span class="txt_bar">|</span>
+                        <span class="txt_date">${board.createTime}</span>
+                    </div>
                 </div>
             </div>
-            <div class="list_content">
-                <a href="#" class="link_post">
-                    <strong class="tit_post">제목2</strong>
-                    <p class="txt_post">내용2</p>
-                </a>
-                <div class="detail_info">
-                    <a href="#" class="link_cate">개발/BE(Back-End)</a>
-                    <span class="txt_bar">|</span>
-                    <span class="txt_date">2023. 3. 31. 10:33</span>
-                </div>
-            </div>
+            </c:forEach>
         </div>
+
     </div>
 </div>
 <%@ include file="layout/footer.jsp"%>

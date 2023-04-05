@@ -97,4 +97,37 @@ body{
     margin-bottom: 1rem;
 }
 
+div.detail_info{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+div.b-title{
+    display: flex;
+}
+
+a{
+    color: #6bacce;
+    text-decoration: none;
+}
+p {
+    color: black !important;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-left: 10px;
+}
+
+.txt_date{
+    font-size: 10px !important;
+}
+
+div.card{
+    margin: 8px;
+}
+
 
