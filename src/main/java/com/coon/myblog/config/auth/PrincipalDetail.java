@@ -21,7 +21,6 @@ public class PrincipalDetail implements UserDetails {
         authorities.add(() -> {
             return "ROLE_"+user.getRoleType();
         });
-        System.out.println("PrincipalDetail");
         return authorities;
     }
 

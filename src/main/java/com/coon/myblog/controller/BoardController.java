@@ -10,4 +10,9 @@ public class BoardController {
     public String index(){
         return "index";
     }
+
+    @GetMapping("/board/writeForm")
+    public String writeForm(){
+        return "board/writeForm";
+    }
 }

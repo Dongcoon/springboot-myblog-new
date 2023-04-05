@@ -25,8 +25,6 @@ public class SecurityConfig {
                 .loginProcessingUrl("/auth/loginProc") //로그인 연산시킬 URI
                 .defaultSuccessUrl("/"); //로그인 성공시 응답할 URI
 
-        System.out.println("SecurityFilterChain");
-
         return http.build(); // build 패턴
     }
 }
