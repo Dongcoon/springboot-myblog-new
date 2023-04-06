@@ -15,7 +15,7 @@
         </div>
 
         <div id="mArticle" class="article_skin">
-            <c:forEach var="board" items="${boards}">
+            <c:forEach var="board" items="${boards.content}">
             <div class="card w-100 p-1" >
                 <div class="card-body p-1">
                     <a href="/board/${board.id}" class="link_post">
@@ -34,6 +34,44 @@
                 </div>
             </div>
             </c:forEach>
+
+            <%--  처음  --%>
+            <ul class="pagination justify-content-center">
+                <c:choose>
+                    <c:when test="${boards.first}">
+                        <li class="page-item disabled"><a class="page-link" href="?page=0">처음</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="?page=${boards.number-1}">◀</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="?page=0">처음</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=${boards.number-1}">◀</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+                <%--  페이지 그룹  --%>
+                <c:forEach begin="${startBlockPage}" end="${endBlockPage}" var="i">
+                    <c:choose>
+                        <c:when test="${boards.pageable.pageNumber+1 == i}">
+                            <li class="page-item disabled"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+                <%--  마지막  --%>
+                <c:choose>
+                    <c:when test="${boards.last}">
+                        <li class="page-item disabled"><a class="page-link" href="?page=${boards.number+1}">▶️️</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="?page=${boards.totalPages-1}">마지막</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="?page=${boards.number+1}">▶️️</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=${boards.totalPages-1}">마지막</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
         </div>
 
     </div>
