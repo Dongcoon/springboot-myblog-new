@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="layout/header.jsp"%>
 
+<%-- 사이드바 --%>
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-3 bd-sidebar">
@@ -14,7 +15,11 @@
             <br>
         </div>
 
+ <%--글 정보 --%>
         <div id="mArticle" class="article_skin">
+            <div class="home-title">
+                <h1><strong><a href="/"> 글 전체보기</a></strong></h1>
+            </div>
             <c:forEach var="board" items="${boards.content}">
             <div class="card w-100 p-1" >
                 <div class="card-body p-1">
@@ -34,7 +39,7 @@
                 </div>
             </div>
             </c:forEach>
-
+<%-- 페이지 --%>
             <%--  처음  --%>
             <ul class="pagination justify-content-center">
                 <c:choose>

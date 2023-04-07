@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardService {
@@ -39,6 +40,29 @@ public class BoardService {
         model.addAttribute("startBlockPage", startBlockPage);
         model.addAttribute("endBlockPage", endBlockPage);
         model.addAttribute("boards", blist);
+    }
 
+    @Transactional
+    public void 글상세보기(int id, Model model){
+
+        model.addAttribute("board",boardRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException("글 상세보기 페이지를 찿을 수 없습니다.");
+                }));
+    }
+
+    @Transactional
+    public void 글수정하기(int id, Board requestBoard){
+
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException("글 찾기 실패: 아이디를 찾을 수 없습니다.");
+                });
+
+        System.out.println("제목: "+requestBoard.getTitle());
+        System.out.println("내용: "+requestBoard.getContent());
+        board.setTitle(requestBoard.getTitle());
+        board.setContent(requestBoard.getContent());
+        // 더티 체킹
     }
 }

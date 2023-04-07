@@ -5,6 +5,9 @@ let index = {
         //"click"이 일어날 경우 , 뒤의 값이 리턴되는데 람다 식을 이용하여 함수가 실행되도록 한다.
         $("#btn-write").on("click", () => {
             this.write();
+        }),
+        $("#btn-update").on("click", () => {
+            this.update();
         })
     },
     write: function (){
@@ -26,6 +29,30 @@ let index = {
             location.href = "/";
         }).fail(function(error) {
             alert("글쓰기를 실패하였습니다.");
+            alert(JSON.stringify(error));
+            location.href = "/";
+        });
+    },
+
+    update: function (){
+        let id = $("#id").val();
+
+        let data = {
+            title: $("#title").val(),
+            content: $("#content").val()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/board/"+id,
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            dataType : "json"
+        }).done(function (resp){
+            alert("정상적으로 글 수정이 완료되었습니다.");
+            location.href = "/";
+        }).fail(function(error) {
+            alert("글 수정을 실패하였습니다.");
             alert(JSON.stringify(error));
             location.href = "/";
         });
